@@ -1,26 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Tailwind v4 Theme Configuration */
+@theme {
+  --color-background: oklch(from #151311 l c h);
+  --color-foreground: oklch(from #f7f5f0 l c h);
+
+  --color-card: oklch(from #1f1d1c l c h);
+  --color-card-foreground: oklch(from #f7f5f0 l c h);
+
+  --color-popover: oklch(from #1f1d1c l c h);
+  --color-popover-foreground: oklch(from #f7f5f0 l c h);
+
+  /* Fire Red - Primary Brand Color */
+  --color-primary: oklch(from #e62e2e l c h);
+  --color-primary-foreground: oklch(from #ffffff l c h);
+
+  --color-secondary: oklch(from #2a2725 l c h);
+  --color-secondary-foreground: oklch(from #ebe6db l c h);
+
+  --color-muted: oklch(from #2f2d2a l c h);
+  --color-muted-foreground: oklch(from #a39e95 l c h);
+
+  --color-accent: oklch(from #cb1414 l c h);
+  --color-accent-foreground: oklch(from #ffffff l c h);
+
+  --color-destructive: oklch(from #f03838 l c h);
+  --color-destructive-foreground: oklch(from #ffffff l c h);
+
+  --color-border: oklch(from #383432 l c h);
+  --color-input: oklch(from #383432 l c h);
+  --color-ring: oklch(from #e62e2e l c h);
+
+  --radius: 0.75rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Legacy CSS Variables for compatibility */
+    --background: 21 19 17;
+    --foreground: 247 245 240;
+    --card: 31 29 28;
+    --card-foreground: 247 245 240;
+    --popover: 31 29 28;
+    --popover-foreground: 247 245 240;
+    --primary: 230 46 46;
+    --primary-foreground: 255 255 255;
+    --secondary: 42 39 37;
+    --secondary-foreground: 235 230 219;
+    --muted: 47 45 42;
+    --muted-foreground: 163 158 149;
+    --accent: 203 20 20;
+    --accent-foreground: 255 255 255;
+    --destructive: 240 56 56;
+    --destructive-foreground: 255 255 255;
+    --border: 56 52 50;
+    --input: 56 52 50;
+    --ring: 230 46 46;
+
+    /* Custom fire palette - Red theme */
+    --fire-ember: #e62e2e;
+    --fire-orange: #cb1414;
+    --fire-glow: #f33c3c;
+    --fire-warm: #a80d0d;
+    --charcoal: #151311;
+    --charcoal-light: #252321;
+    --cream: #f5f1e8;
+
+    /* Gradients */
+    --gradient-fire: linear-gradient(135deg, #e62e2e, #cb1414);
+    --gradient-glow: radial-gradient(ellipse at center, rgba(230, 46, 46, 0.15), transparent 70%);
+    --gradient-dark: linear-gradient(180deg, #151311, #252321);
+
+    /* Shadows */
+    --shadow-fire: 0 4px 30px rgba(230, 46, 46, 0.3);
+    --shadow-glow: 0 0 60px rgba(230, 46, 46, 0.2);
+
+    /* Typography */
+    --font-display: 'Poppins', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+
+    /* Neon effect */
+    --neon-red: 0 0 10px #e62e2e, 0 0 20px #e62e2e, 0 0 40px #e62e2e;
+
+    --sidebar-background: 21 19 17;
+    --sidebar-foreground: 247 245 240;
+    --sidebar-primary: 230 46 46;
+    --sidebar-primary-foreground: 255 255 255;
+    --sidebar-accent: 42 39 37;
+    --sidebar-accent-foreground: 247 245 240;
+    --sidebar-border: 56 52 50;
+    --sidebar-ring: 230 46 46;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+}
+
+@layer components {
+  .fire-gradient {
+    background: var(--gradient-fire);
+  }
+
+  .fire-glow {
+    box-shadow: var(--shadow-fire);
+  }
+
+  .text-gradient-fire {
+    background: var(--gradient-fire);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-overlay {
+    background: var(--gradient-glow);
+  }
+
+  /* Fire color utilities */
+  .text-fire-ember {
+    color: var(--fire-ember);
+  }
+
+  .bg-fire-ember {
+    background-color: var(--fire-ember);
+  }
+
+  .border-fire-ember {
+    border-color: var(--fire-ember);
+  }
+
+  .fill-fire-ember {
+    fill: var(--fire-ember);
+  }
+
+  .text-fire-orange {
+    color: var(--fire-orange);
+  }
+
+  .bg-fire-orange {
+    background-color: var(--fire-orange);
+  }
+
+  .text-charcoal-light {
+    color: var(--charcoal-light);
+  }
+
+  .bg-charcoal-light {
+    background-color: var(--charcoal-light);
+  }
+}
+
+@layer utilities {
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
 }

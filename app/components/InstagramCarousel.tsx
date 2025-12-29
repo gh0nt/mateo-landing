@@ -175,7 +175,7 @@ export default function InstagramCarousel() {
         {/* View on Instagram link */}
         <div className="text-center mt-8">
           <a
-            href="https://www.instagram.com/mateogourmet/"
+            href="https://www.instagram.com/mateo_gourmet/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#F77737] text-white font-medium rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300"

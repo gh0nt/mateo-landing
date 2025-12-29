@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "./ui/button";
 import { Check, Shield } from "lucide-react";
 import chefImage from "../assets/chef-pricing.png";
@@ -49,7 +51,15 @@ const PricingSection = () => {
                 ))}
               </ul>
 
-              <Button variant="fire" size="xl" className="w-full mb-6">
+              <Button
+                onClick={() =>
+                  (window.location.href =
+                    "https://hotmart.com/es/marketplace/productos/de-principiante-a-chef/P97284882E")
+                }
+                variant="fire"
+                size="xl"
+                className="w-full mb-6"
+              >
                 Quiero acceso ahora
               </Button>
 

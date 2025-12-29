@@ -14,7 +14,7 @@ const discoveries = [
   },
   {
     icon: Eye,
-    text: "Cómo piensan los chefs profesionales el fuego, el sabor y el equilibrio",
+    text: "Cómo los chefs profesionales toman decisiones sobre el fuego, el sabor y el equilibrio",
   },
   {
     icon: Sparkles,

@@ -5,6 +5,7 @@ import Awareness from "@/app/components/Awareness";
 import BeforeAfterSection from "@/app/components/BeforeAfterSection";
 import ProgramSection from "@/app/components/ProgramSection";
 import ChefSection from "@/app/components/ChefSection";
+import InstagramCarousel from "@/app/components/InstagramCarousel";
 import TestimonialSection from "@/app/components/TestimonialSection";
 import Pricing from "@/app/components/Pricing";
 import FAQSection from "@/app/components/FAQSection";
@@ -20,6 +21,7 @@ const Index = () => {
       <BeforeAfterSection />
       <ProgramSection />
       <ChefSection />
+      <InstagramCarousel />
       <TestimonialSection />
       <Pricing />
       <FAQSection />

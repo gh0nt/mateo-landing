@@ -32,13 +32,12 @@ const HeroSection = () => {
         {/* Headline */}
         <div className="space-y-4">
           <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground leading-tight uppercase">
-            <span className="text-fire-ember">DE PRINCIPIANTE,</span> A CHEF
-            COMIENZA AQUÍ
+            <span className="text-fire-ember">DE PRINCIPIANTE,</span> A CHEF TU
+            FORMA DE COCINAR CAMBIA AQUÍ
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground uppercase tracking-wide">
-            UNA CLASE GRATUITA DONDE EL CHEF MATEO CALDERÓN MUESTRA LA
-            EXPERIENCIA DE COCINAR COMO UN CHEF DE MÁS DE 34 PAÍSES MÁS ALLÁ DE
-            LA RECETA.
+            Una receta sencilla con la que el Chef Mateo Calderón logró generar
+            ingresos en plena pandemia.
           </p>
         </div>
 
@@ -63,13 +62,12 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Uncomment and add your video URL here */}
-          {/* <iframe
-            src="YOUR_VIDEO_URL"
+          <iframe
+            src="https://www.youtube.com/embed/oVf3Y4qJjUM?si=Nld3BBrecXh4sGeH"
             className="absolute inset-0 w-full h-full"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-          /> */}
+          />
         </div>
 
         {/* CTA Button */}

@@ -21,7 +21,14 @@ const FooterCTA = () => {
               esta comunidad y destaca en cada plato.
             </p>
             <div className="uppercase flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button variant="fire" size="xl">
+              <Button
+                onClick={() =>
+                  (window.location.href =
+                    "https://hotmart.com/es/marketplace/productos/de-principiante-a-chef/P97284882E")
+                }
+                variant="fire"
+                size="xl"
+              >
                 Quiero subir de nivel ahora
               </Button>
               <Button

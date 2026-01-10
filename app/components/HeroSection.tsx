@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "./ui/button";
+import * as fbq from "../lib/fbpixel";
 
 const HeroSection = () => {
   const scrollToVideo = () => {
@@ -8,6 +9,13 @@ const HeroSection = () => {
     if (videoElement) {
       videoElement.scrollIntoView({ behavior: "smooth", block: "center" });
     }
+  };
+
+  const handleVideoPlay = () => {
+    fbq.event("ViewContent", {
+      content_name: "VSL Video",
+      content_type: "video",
+    });
   };
 
   return (
@@ -63,10 +71,29 @@ const HeroSection = () => {
           </div>
 
           <iframe
-            src="https://www.youtube.com/embed/oVf3Y4qJjUM?si=Nld3BBrecXh4sGeH"
+            src="https://www.youtube.com/embed/oVf3Y4qJjUM?si=Nld3BBrecXh4sGeH&enablejsapi=1"
             className="absolute inset-0 w-full h-full"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
+            onLoad={(e) => {
+              const iframe = e.target as HTMLIFrameElement;
+              iframe.contentWindow?.postMessage(
+                '{"event":"command","func":"addEventListener","args":["onStateChange"]}',
+                "*"
+              );
+              window.addEventListener("message", (event) => {
+                if (event.data && typeof event.data === "string") {
+                  try {
+                    const data = JSON.parse(event.data);
+                    if (data.event === "onStateChange" && data.info === 1) {
+                      handleVideoPlay();
+                    }
+                  } catch (e) {
+                    // Ignore parsing errors
+                  }
+                }
+              });
+            }}
           />
         </div>
 

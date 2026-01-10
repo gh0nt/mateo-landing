@@ -2,6 +2,7 @@
 
 import { Button } from "./ui/button";
 import { Check, Shield } from "lucide-react";
+import * as fbq from "../lib/fbpixel";
 import chefImage from "../assets/chef-pricing.png";
 
 const included = [
@@ -52,10 +53,11 @@ const PricingSection = () => {
               </ul>
 
               <Button
-                onClick={() =>
-                  (window.location.href =
-                    "https://hotmart.com/es/marketplace/productos/de-principiante-a-chef/P97284882E")
-                }
+                onClick={() => {
+                  fbq.event("Lead", { content_name: "VSL - CTA hotmart" });
+                  window.location.href =
+                    "https://hotmart.com/es/marketplace/productos/de-principiante-a-chef/P97284882E";
+                }}
                 variant="fire"
                 size="xl"
                 className="w-full mb-6"

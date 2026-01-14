@@ -23,7 +23,7 @@ const HeroSection = () => {
       {/* YouTube Video Background */}
       <div className="absolute inset-0 z-0">
         <iframe
-          src="https://www.youtube.com/embed/kFHjHoWAMzw?autoplay=1&mute=1&loop=1&playlist=kFHjHoWAMzw&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+          src="https://www.youtube.com/embed/dHtqHf2F3Og?autoplay=1&mute=1&loop=1&playlist=dHtqHf2F3Og&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
           className="absolute inset-0 w-full h-full object-cover pointer-events-none"
           style={{ transform: "scale(1.5)" }}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -71,7 +71,7 @@ const HeroSection = () => {
           </div>
 
           <iframe
-            src="https://www.youtube.com/embed/oVf3Y4qJjUM?si=Nld3BBrecXh4sGeH&enablejsapi=1"
+            src="https://www.youtube.com/embed/kFHjHoWAMzw?autoplay=1&mute=1&loop=1&playlist=kFHjHoWAMzw&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
             className="absolute inset-0 w-full h-full"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen

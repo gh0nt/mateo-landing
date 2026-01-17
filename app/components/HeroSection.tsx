@@ -1,9 +1,12 @@
 "use client";
 
+import { useRef, useEffect, useCallback } from "react";
 import { Button } from "./ui/button";
-import * as fbq from "../lib/fbpixel";
+import { safeTrackWithRetry, trackCustom } from "../lib/fbpixel";
 
 const HeroSection = () => {
+  const hasTrackedVSLPlay = useRef(false);
+
   const scrollToVideo = () => {
     const videoElement = document.getElementById("vsl-video");
     if (videoElement) {
@@ -11,12 +14,33 @@ const HeroSection = () => {
     }
   };
 
-  const handleVideoPlay = () => {
-    fbq.event("ViewContent", {
-      content_name: "VSL Video",
-      content_type: "video",
-    });
-  };
+  const handleVideoPlay = useCallback(() => {
+    // Fire only once per page load
+    if (hasTrackedVSLPlay.current) return;
+    hasTrackedVSLPlay.current = true;
+
+    safeTrackWithRetry(() => trackCustom("VSL_Play", { content_name: "VSL" }));
+  }, []);
+
+  // Listen for YouTube postMessage events
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data && typeof event.data === "string") {
+        try {
+          const data = JSON.parse(event.data);
+          // YouTube sends info=1 when video starts playing
+          if (data.event === "onStateChange" && data.info === 1) {
+            handleVideoPlay();
+          }
+        } catch {
+          // Ignore parsing errors from other postMessage sources
+        }
+      }
+    };
+
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, [handleVideoPlay]);
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-5 py-12 overflow-hidden">
@@ -71,28 +95,17 @@ const HeroSection = () => {
           </div>
 
           <iframe
-            src="https://www.youtube.com/embed/kFHjHoWAMzw?autoplay=1&mute=0&loop=1&playlist=kFHjHoWAMzw&controls=1&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+            src="https://www.youtube.com/embed/kFHjHoWAMzw?autoplay=1&mute=0&loop=1&playlist=kFHjHoWAMzw&controls=1&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
             className="absolute inset-0 w-full h-full"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-            onLoad={(e) => {
+            onLoad={(e: React.SyntheticEvent<HTMLIFrameElement>) => {
               const iframe = e.target as HTMLIFrameElement;
+              // Enable YouTube JS API to receive state change events
               iframe.contentWindow?.postMessage(
                 '{"event":"command","func":"addEventListener","args":["onStateChange"]}',
                 "*",
               );
-              window.addEventListener("message", (event) => {
-                if (event.data && typeof event.data === "string") {
-                  try {
-                    const data = JSON.parse(event.data);
-                    if (data.event === "onStateChange" && data.info === 1) {
-                      handleVideoPlay();
-                    }
-                  } catch (e) {
-                    // Ignore parsing errors
-                  }
-                }
-              });
             }}
           />
         </div>

@@ -2,8 +2,11 @@
 
 import { Button } from "./ui/button";
 import { Check, Shield } from "lucide-react";
-import * as fbq from "../lib/fbpixel";
+import { trackAndRedirect } from "../lib/fbpixel";
 import chefImage from "../assets/chef-pricing.png";
+
+const HOTMART_URL =
+  "https://hotmart.com/es/marketplace/productos/de-principiante-a-chef/P97284882E";
 
 const included = [
   "Programa completo “De Principiante a Chef”, paso a paso",
@@ -54,9 +57,12 @@ const PricingSection = () => {
 
               <Button
                 onClick={() => {
-                  fbq.event("Lead", { content_name: "VSL - CTA hotmart" });
-                  window.location.href =
-                    "https://hotmart.com/es/marketplace/productos/de-principiante-a-chef/P97284882E";
+                  trackAndRedirect(
+                    HOTMART_URL,
+                    "Lead",
+                    { content_name: "VSL - CTA hotmart" },
+                    { openInNewTab: true },
+                  );
                 }}
                 variant="fire"
                 size="xl"

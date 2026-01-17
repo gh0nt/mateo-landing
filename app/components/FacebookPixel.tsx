@@ -2,14 +2,14 @@
 
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import * as fbq from "../lib/fbpixel";
+import { pageview } from "../lib/fbpixel";
 
 export default function FacebookPixel() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    fbq.pageview();
+    pageview();
   }, [pathname, searchParams]);
 
   return null;

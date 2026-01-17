@@ -71,7 +71,7 @@ const HeroSection = () => {
           </div>
 
           <iframe
-            src="https://www.youtube.com/embed/kFHjHoWAMzw?autoplay=1&mute=1&loop=1&playlist=kFHjHoWAMzw&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+            src="https://www.youtube.com/embed/kFHjHoWAMzw?autoplay=1&mute=0&loop=1&playlist=kFHjHoWAMzw&controls=1&showinfo=0&rel=0&modestbranding=1&playsinline=1"
             className="absolute inset-0 w-full h-full"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
@@ -79,7 +79,7 @@ const HeroSection = () => {
               const iframe = e.target as HTMLIFrameElement;
               iframe.contentWindow?.postMessage(
                 '{"event":"command","func":"addEventListener","args":["onStateChange"]}',
-                "*"
+                "*",
               );
               window.addEventListener("message", (event) => {
                 if (event.data && typeof event.data === "string") {

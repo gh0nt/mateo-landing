@@ -37,7 +37,7 @@ export default function InstagramCarousel() {
 
   const prevSlide = () => {
     setCurrentSlide(
-      (prev) => (prev - 1 + INSTAGRAM_POSTS.length) % INSTAGRAM_POSTS.length
+      (prev) => (prev - 1 + INSTAGRAM_POSTS.length) % INSTAGRAM_POSTS.length,
     );
   };
 
@@ -64,8 +64,27 @@ export default function InstagramCarousel() {
   }, [currentSlide]);
 
   return (
-    <section className="py-16 px-5 bg-background">
-      <div className="max-w-6xl mx-auto">
+    <section className="relative py-16 px-5 bg-background overflow-hidden">
+      {/* YouTube Video Background */}
+      <div className="absolute inset-0 z-0">
+        <iframe
+          src="https://www.youtube.com/embed/_5CSitKheXQ?autoplay=1&mute=1&loop=1&playlist=_5CSitKheXQ&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&start=10"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+          style={{ transform: "scale(1.5)" }}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+        {/* Dark overlay for content readability */}
+        <div className="absolute inset-0 bg-background/85" />
+      </div>
+
+      {/* Top gradient fade from previous section */}
+      <div className="absolute top-0 left-0 right-0 h-32 sm:h-40 md:h-48 z-5 pointer-events-none bg-gradient-to-b from-background to-transparent" />
+
+      {/* Bottom gradient fade to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 sm:h-40 md:h-48 z-5 pointer-events-none bg-gradient-to-b from-transparent to-background" />
+
+      <div className="relative z-20 max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
           <div className="text-center md:text-left">

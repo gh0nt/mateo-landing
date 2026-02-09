@@ -64,22 +64,63 @@ const HeroSection = () => {
         {/* Headline */}
         <div className="space-y-4">
           <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground leading-tight uppercase">
-            <span className="text-fire-ember">DE PRINCIPIANTE,</span> A CHEF TU
-            FORMA DE COCINAR CAMBIA AQUÍ
+            <span className="text-fire-ember">SABER COCINAR</span> CAMBIA LA
+            FORMA EN QUE LAS PERSONAS TE PERCIBEN
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground uppercase tracking-wide">
-            Una receta sencilla con la que el Chef Mateo Calderón logró generar
-            ingresos en plena pandemia.
+            Esta receta es un primer paso para que eso empiece a notarse
           </p>
         </div>
 
         {/* Video Container */}
         <div
           id="vsl-video"
-          className="relative w-full aspect-[9/16] sm:aspect-video max-w-lg mx-auto rounded-xl overflow-hidden bg-card border border-border shadow-lg"
+          className="relative w-full aspect-[9/16] sm:aspect-video max-w-6xl mx-auto rounded-xl overflow-hidden bg-card border border-border shadow-2xl"
         >
+          {/* Neon blurred shiny background */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <div
+              className="w-full h-full"
+              style={{
+                position: "absolute",
+                inset: 0,
+                zIndex: 0,
+                pointerEvents: "none",
+                background:
+                  "radial-gradient(circle at 60% 40%, #00fff7 0%, #ff00ea 40%, #fffb00 70%, transparent 100%)",
+                filter: "blur(40px) brightness(1.2)",
+                opacity: 0.7,
+              }}
+            />
+            <div
+              className="w-full h-full"
+              style={{
+                position: "absolute",
+                inset: 0,
+                zIndex: 0,
+                pointerEvents: "none",
+                background:
+                  "linear-gradient(135deg, rgba(0,255,247,0.2) 0%, rgba(255,0,234,0.15) 50%, rgba(255,251,0,0.1) 100%)",
+                filter: "blur(20px)",
+                opacity: 0.8,
+              }}
+            />
+            <div
+              className="w-full h-full"
+              style={{
+                position: "absolute",
+                inset: 0,
+                zIndex: 0,
+                pointerEvents: "none",
+                background:
+                  "radial-gradient(circle at 80% 80%, #fff 0%, transparent 70%)",
+                filter: "blur(60px) brightness(1.5)",
+                opacity: 0.5,
+              }}
+            />
+          </div>
           {/* Video Placeholder - Replace with actual video embed */}
-          <div className="absolute inset-0 flex items-center justify-center bg-charcoal-light">
+          <div className="absolute inset-0 flex items-center justify-center bg-charcoal-light z-10">
             <div className="text-center space-y-4">
               <div className="w-20 h-20 mx-auto rounded-full fire-gradient flex items-center justify-center fire-glow cursor-pointer hover:scale-105 transition-transform">
                 <svg
@@ -96,7 +137,7 @@ const HeroSection = () => {
 
           <iframe
             src="https://www.youtube.com/embed/kFHjHoWAMzw?autoplay=1&mute=0&loop=1&playlist=kFHjHoWAMzw&controls=1&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full z-20"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             onLoad={(e: React.SyntheticEvent<HTMLIFrameElement>) => {
@@ -112,6 +153,9 @@ const HeroSection = () => {
 
         {/* CTA Button */}
       </div>
+
+      {/* Gradient fade to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 sm:h-40 md:h-48 z-30 pointer-events-none bg-gradient-to-b from-transparent to-background" />
     </section>
   );
 };

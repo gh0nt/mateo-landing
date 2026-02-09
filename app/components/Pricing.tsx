@@ -11,7 +11,7 @@ const HOTMART_URL =
 const included = [
   "Programa completo “De Principiante a Chef”, paso a paso",
   "Clases grabadas en calidad 4K, con equipo profesional, múltiples cámaras y tomas reales de cocina",
-  "Técnicas y experiencia aprendidos tras 34 países cocinando alrededor del mundo",
+  "Conocimiento que puedes convertir en fuente de ingreso",
   "Comunidad privada de personas que quieren llevar su cocina a otro nivel",
   "Actualizaciones de por vida (sin volver a pagar)",
 ];
@@ -19,10 +19,30 @@ const included = [
 const PricingSection = () => {
   return (
     <section className="py-16 px-5">
+      <style jsx>{`
+        @keyframes neon-glow {
+          0%,
+          100% {
+            box-shadow:
+              0 0 10px rgba(255, 215, 0, 0.3),
+              0 0 20px rgba(255, 215, 0, 0.2),
+              0 0 30px rgba(255, 215, 0, 0.1);
+          }
+          50% {
+            box-shadow:
+              0 0 25px rgba(255, 215, 0, 0.8),
+              0 0 50px rgba(255, 215, 0, 0.6),
+              0 0 75px rgba(255, 215, 0, 0.4);
+          }
+        }
+        .neon-card {
+          animation: neon-glow 2s ease-in-out infinite;
+        }
+      `}</style>
       <div className="max-w-4xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-8 items-stretch">
           {/* Pricing Card - First on mobile, left on desktop */}
-          <div className="flex-1 p-8 rounded-2xl bg-card border border-fire-ember/30 relative overflow-hidden order-1 lg:order-2">
+          <div className="neon-card flex-1 p-8 rounded-2xl bg-card border border-yellow-500 relative overflow-hidden order-1 lg:order-2">
             <div className="absolute inset-0 glow-overlay opacity-20 pointer-events-none" />
 
             <div className="relative z-10 text-center lg:text-left">
@@ -66,9 +86,9 @@ const PricingSection = () => {
                 }}
                 variant="fire"
                 size="xl"
-                className="w-full mb-6"
+                className="uppercase text-xl w-full mb-6"
               >
-                Quiero acceso ahora
+                ¡Quiero acceso ahora!
               </Button>
 
               <div className="flex items-center justify-center lg:justify-start gap-2 text-muted-foreground text-sm">

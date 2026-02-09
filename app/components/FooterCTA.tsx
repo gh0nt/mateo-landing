@@ -2,6 +2,7 @@
 import { Button } from "./ui/button";
 import chefImage from "../assets/chef-mateo.png";
 import logoImage from "../assets/logo-lienzo.png";
+import NeonArrows from "./NeonArrows";
 
 const FooterCTA = () => {
   return (
@@ -21,23 +22,19 @@ const FooterCTA = () => {
               esta comunidad y destaca en cada plato.
             </p>
             <div className="uppercase flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button
-                onClick={() =>
-                  (window.location.href =
-                    "https://hotmart.com/es/marketplace/productos/de-principiante-a-chef/P97284882E")
-                }
-                variant="fire"
-                size="xl"
-              >
-                Quiero subir de nivel ahora
-              </Button>
-              <Button
-                variant="fireOutline"
-                size="xl"
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              >
-                Ver la clase gratuita
-              </Button>
+              <div className="relative">
+                <Button
+                  onClick={() =>
+                    (window.location.href =
+                      "https://hotmart.com/es/marketplace/productos/de-principiante-a-chef/P97284882E")
+                  }
+                  variant="fire"
+                  size="xl"
+                >
+                  Quiero subir de nivel ahora
+                </Button>
+                <NeonArrows />
+              </div>
             </div>
           </div>
 
@@ -62,7 +59,12 @@ const FooterCTA = () => {
             className="h-10 sm:h-12 w-auto brightness-0 invert opacity-80"
           />
           <p className="text-muted-foreground text-sm text-center">
-            © 2024 Lienzo y Fuego. Todos los derechos reservados.
+            © {new Date().getFullYear()} Lienzo y Fuego. Todos los derechos
+            reservados.
+          </p>
+          <p className="text-muted-foreground text-sm text-center">
+            ¿Necesitas web? Contacta a{" "}
+            <a href="https://marcelopuentes.com">Marcelo Puentes</a>
           </p>
         </div>
       </div>

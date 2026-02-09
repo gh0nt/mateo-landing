@@ -21,7 +21,7 @@ const ChefSection = () => {
               CHEF MATEO CALDERÓN
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Mateo ha explorado la gastronomía de más de 34 países y ha
+              Mateo ha explorado la gastronomía de más de 35 países y ha
               cocinado profesionalmente en 6 de ellos. Su experiencia no viene
               de libros: nace del fuego, de cocinas reales y de años
               desarrollando criterio culinario en distintos contextos del mundo.
